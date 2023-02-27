@@ -9,14 +9,6 @@
     MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
   %>
   <title>Title</title>
-  <script>
-    function logout(){
-      let result = confirm("로그아웃 하시겠습니까?");
-      if (result){
-        location.href="/member/logout.jsp"
-      }
-    }
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script src="/assets/js/index.js"></script>
