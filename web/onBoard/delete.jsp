@@ -10,9 +10,6 @@
 <body>
 <%
   MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-  if (logIn == null){
-    response.sendRedirect("/index.jsp");
-  }
 
   int id = Integer.parseInt(request.getParameter("id"));
 

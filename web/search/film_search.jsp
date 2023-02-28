@@ -12,9 +12,6 @@
     <%
         request.setCharacterEncoding("UTF-8");
         MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-        if (logIn == null) {
-            response.sendRedirect("/assets/logInError.jsp");
-        }
 
         String title = request.getParameter("title");
 

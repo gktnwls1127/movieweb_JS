@@ -17,13 +17,13 @@
             <div class="col-3 mb-3">
                 <h1>회원가입</h1>
             </div>
-            <form>
                 <div class="row justify-content-center mb-2">
                     <div class="col-6">
                         <div class="form-floating">
                             <input type="text" id="username" name="username" class="form-control" placeholder="아이디">
                             <label for="username">아이디</label>
                         </div>
+                        <div class="mt-2 usernameCheck"></div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-2">
@@ -32,6 +32,7 @@
                             <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호">
                             <label for="username">비밀번호</label>
                         </div>
+                        <div class="mt-2 pwCheck"></div>
                     </div>
                 </div>
                 <div class="row justify-content-center mb-2">
@@ -40,12 +41,12 @@
                             <input type="text" id="nickname" name="nickname" class="form-control" placeholder="닉네임">
                             <label for="username">닉네임</label>
                         </div>
+                        <div class="mt-2 nickCheck"></div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <button class="btn btn-outline-primary col-6 m-1" onclick="validateInput()">회원가입</button>
+                    <button type="submit" class="btn btn-outline-primary col-6 m-1" onclick="validateInput()">회원가입</button>
                 </div>
-            </form>
         </div>
     </div>
 </div>

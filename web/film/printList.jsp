@@ -26,10 +26,6 @@
         <%
             MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
 
-            if (logIn == null) {
-                response.sendRedirect("/assets/logInError.jsp");
-            }
-
             int pageNo;
             try {
                 String pageStr = request.getParameter("pageNo");

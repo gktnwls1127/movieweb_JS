@@ -12,9 +12,6 @@
 <head>
     <%
         MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-        if (logIn == null) {
-            response.sendRedirect("/assets/logInError.jsp");
-        }
 
         int filmId = Integer.parseInt(request.getParameter("filmId"));
 
