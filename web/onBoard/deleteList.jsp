@@ -17,9 +17,10 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/assets/js/onBoard/delete.js"></script>
     <%
-        MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-
         int id = Integer.parseInt(request.getParameter("id"));
 
         ConnectionMaker connectionMaker = new MySqlConnectioMaker();
@@ -35,14 +36,6 @@
         pageContext.setAttribute("onBoard_list", onBoard_list);
 
     %>
-    <script>
-        function confirmDelete(onBoardId) {
-            let result = confirm("정말로 삭제하시겠습니까?");
-            if (result) {
-                location.href = "/onBoard/delete.jsp?id=" + onBoardId;
-            }
-        }
-    </script>
 </head>
 <body>
 <header class="p-3 mb-3 border-bottom">
@@ -72,7 +65,7 @@
                         <td>${filmDTO.title}</td>
                         <td>${theaterController.selectOne(onBoard.theaterId).theaterName}</td>
                         <td>${onBoard.runningTime}</td>
-                        <td><button class="btn btn-outline-danger" onclick="confirmDelete(${onBoard.id})">삭제</button></td>
+                        <td><button class="btn btn-outline-danger" onclick="deleteOnBoard(${onBoard.id})">삭제</button></td>
                     </tr>
                     </tbody>
                 </c:forEach>

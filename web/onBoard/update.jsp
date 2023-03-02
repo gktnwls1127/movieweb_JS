@@ -18,12 +18,11 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <%
-    MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-    if (logIn == null || logIn.getLevel() != 3) {
-      response.sendRedirect("/index.jsp");
-    }
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="/assets/js/onBoard/update.js"></script>
+  <%
     int id = Integer.parseInt(request.getParameter("id"));
 
     ConnectionMaker connectionMaker = new MySqlConnectioMaker();
@@ -52,13 +51,19 @@
       <div class="m-5 text-start">
         <h4>${filmController.selectOne(onBoardDTO.filmId).title} 상영정보 수정하기</h4>
       </div>
-        <h6 class="text-start mb-3">상영번호 ${onBoardDTO.id}</h6>
-        <form action="/onBoard/update_logic.jsp?id=${onBoardDTO.id}" method="post">
+      <div class="row justify-content-center mb-3">
+        <div class="col-10">
+          <div class="form-floating">
+            <input id="onBoardId" type="text" name="onBoardId" class="form-control" value="${onBoardDTO.id}" readonly>
+            <label for="onBoardId">영화 번호</label>
+          </div>
+        </div>
+      </div>
           <div class="row justify-content-center mb-3">
             <div class="col-10">
               <div class="form-floating">
-                <input id="film" type="text" name="filmId" class="form-control" value="${onBoardDTO.filmId}" readonly>
-                <label for="film">영화 번호</label>
+                <input id="filmId" type="text" name="filmId" class="form-control" value="${onBoardDTO.filmId}" readonly>
+                <label for="filmId">영화 번호</label>
               </div>
             </div>
           </div>
@@ -73,13 +78,13 @@
           <div class="row justify-content-center mb-3">
             <div class="col-10">
               <div class="form-floating">
-                <select class="form-select" name="theaterId" id="theater">
+                <select class="form-select" name="theaterId" id="theaterId">
                   <option selected>상영정보 등록하고 싶은 극장</option>
                   <c:forEach items="${theater_list}" var="theater" >
                     <option value="${theater.id}">${theater.id}. ${theater.theaterName}</option>
                   </c:forEach>
                 </select>
-                <label for="theater">새로운 극장 선택</label>
+                <label for="theaterId">새로운 극장 선택</label>
               </div>
             </div>
           </div>
@@ -93,10 +98,9 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-10">
-              <button class="btn btn-outline-primary">작성하기</button>
+              <button class="btn btn-outline-primary" onclick="updateOnBoard()">작성하기</button>
             </div>
           </div>
-        </form>
     </div>
   </div>
 </div>

@@ -20,7 +20,7 @@
           integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <%
     MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-    if (logIn == null || logIn.getLevel() != 3) {
+    if (logIn.getLevel() != 3) {
       response.sendRedirect("/index.jsp");
     }
 
@@ -32,7 +32,6 @@
     OnBoardController onBoardController = new OnBoardController(connectionMaker);
 
     FilmDTO filmDTO = filmController.selectOne(id);
-    ArrayList<TheaterDTO> theater_list = theaterController.selectAll();
     ArrayList<OnBoardDTO> onBoard_list = onBoardController.selectFilmAll(id);
 
     pageContext.setAttribute("filmDTO", filmDTO);

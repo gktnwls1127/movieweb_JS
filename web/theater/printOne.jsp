@@ -27,32 +27,25 @@
 
         pageContext.setAttribute("list", list);
         pageContext.setAttribute("filmController", filmController);
+        pageContext.setAttribute("theaterDTO", theaterDTO);
 
     %>
-    <title><%=theaterDTO.getTheaterName()%>
-    </title>
-    <script>
-        function confirmDelete() {
-            let result = confirm("정말로 삭제하시겠습니까?");
-            if (result) {
-                location.href = "/theater/delete.jsp?id=" +
-                <%=theaterDTO.getId()%>
-            }
-        }
-    </script>
+    <title>${theaterDTO.theaterName}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/theater/printOne.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/assets/js/theater/delete.js"></script>
 </head>
 <body>
 <header class="p-3 mb-5 border-bottom">
     <jsp:include page="/tools/header.jsp"/>
 </header>
 <div class="container">
-    <c:set var="theaterDTO" value="<%=theaterDTO%>"/>
     <c:set var="logIn" value="<%=logIn%>"/>
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
         <div class="col-md-6 px-0">
@@ -64,7 +57,7 @@
                     <div class="btn btn-outline-success"
                          onclick="location.href='/theater/update.jsp?id=<%=theaterDTO.getId()%>'">수정하기
                     </div>
-                    <div class="btn btn-outline-danger" onclick="confirmDelete()">삭제하기</div>
+                    <div class="btn btn-outline-danger" onclick="deleteTheater(${theaterDTO.id})">삭제하기</div>
                 </div>
             </c:if>
         </div>

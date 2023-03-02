@@ -1,31 +1,3 @@
-let initPage = () => {
-    let temp = new URLSearchParams(window.location.search).get("id");
-    let data;
-    data = {"id": temp}
-
-    $.ajax({
-        url: "/member/printOne",
-        method: "GET",
-        data: data,
-        success: (message) => {
-            console.log(message);
-            let result = JSON.parse(message);
-            if (result.status == 'success') {
-                let data = JSON.parse(result.data);
-                printData(data);
-            } else {
-                console.log(data);
-                Swal.fire({
-                    title: "!!! ERROR !!!",
-                    text: result.message,
-                    icon: "error"
-                }).then(() => {
-                    location.href = result.nextPath;
-                })
-            }
-        }
-    });
-}
 
 let withdrawal = () => {
     let temp = new URLSearchParams(window.location.search).get("id");

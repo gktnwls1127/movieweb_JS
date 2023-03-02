@@ -1,7 +1,8 @@
 let writeReview = () => {
     let formData = {
-        "content": $('#input-reply').val(),
-        "boardId": new URLSearchParams(window.location.search).get("id")
+        filmId : new URLSearchParams(window.location.search).get("filmId"),
+        score : $('#score').val(),
+        review : $('#review').val()
     }
     $.ajax({
         url: "/review/write",
@@ -14,7 +15,7 @@ let writeReview = () => {
                     title: "!!! ERROR !!!",
                     text: "에러가 발생하였습니다.",
                     icon: "error"
-                })
+                }).then(()=>{location.reload()})
             }
             location.reload();
         }
@@ -71,7 +72,7 @@ function printList(replyArray) {
 
 }
 
-function deleteReply(id){
+function deleteReview(id){
     let sendData = {
         "id" : id,
     }
@@ -84,7 +85,29 @@ function deleteReply(id){
             if (response.status == 'fail'){
                 Swal.fire({text : "오류가 발생하였습니다.",title: "!!! ERROR !!!" });
             }
-            location.reload();
+            else {
+                Swal.fire({
+                    title: '평점 삭제',
+                    text: "정말로 삭제 하시겠습니까?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            '삭제완료!',
+                            '성공적으로 평점이 삭제 되었습니다.',
+                            'success',
+                        ).then(()=> {
+                            location.reload();
+                        })
+                    } else {
+                        location.reload();
+                    }
+                })
+            }
         }
     })
 }
@@ -104,7 +127,7 @@ function updateUi(td, reply){
     $(tr).append(newTd);
 }
 
-function updateReply(reply){
+function updateReview(reply){
     let score = ""
     let content = $('#input-update' + reply.id).val();
     let formData = {

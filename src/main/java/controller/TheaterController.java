@@ -87,7 +87,7 @@ public class TheaterController {
     }
 
     public void update(TheaterDTO theaterDTO){
-        String query = "UPDATE `theater` SET `theaterName` = ?, `theaterPlace` = ? , `theaterNumver` = ? WHERE `id` = ?";
+        String query = "UPDATE `theater` SET `theaterName` = ?, `theaterPlace` = ? , `theaterNumber` = ? WHERE `id` = ?";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);

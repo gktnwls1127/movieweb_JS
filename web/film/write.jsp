@@ -9,9 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
-    <%
-        MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-    %>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/assets/js/film/write.js"></script>
 </head>
 <body>
 <header class="p-3 mb-3 border-bottom">
@@ -23,7 +23,7 @@
             <div class="m-5 text-start">
                 <h2>영화 등록하기</h2>
             </div>
-            <form action="/film/write_logic.jsp" method="post" enctype="multipart/form-data">
+            <form id="formData" enctype="multipart/form-data">
                 <div class="row justify-content-center mb-3">
                     <div class="col-10">
                         <div class="form-floating">
@@ -51,15 +51,15 @@
                 </div>
                 <div class="row justify-content-center mb-4">
                     <div class="col-10">
-                        <input type="file" name="images"/>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-10">
-                    <button class="btn btn-outline-primary">작성하기</button>
+                        <input type="file" name="images" id="images" accept="image/*"/>
                     </div>
                 </div>
             </form>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <button class="btn btn-outline-primary" onclick="writeFilm()">작성하기</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
