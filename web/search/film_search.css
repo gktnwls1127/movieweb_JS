@@ -4,6 +4,10 @@
     white-space:nowrap
 }
 
+body{
+    background-color: #EEF1FF !important;
+}
+
 .rating-color{
     color: mediumslateblue;
 }

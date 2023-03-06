@@ -8,6 +8,7 @@ body {
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
+    background-color: #EEF1FF !important;
 }
 
 .form-signin {
@@ -30,3 +31,20 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.form-signin .btn-outline-color {
+     --bs-btn-color : #AAC4FF;
+     --bs-btn-hover-color : #ffffff;
+     --bs-btn-border-color :#AAC4FF;
+     --bs-btn-focus-shadow-rgb : 25,135,84;
+     --bs-btn-active-color : #fff;
+     --bs-btn-hover-bg :#AAC4FF;
+     --bs-btn-hover-border-color :#AAC4FF;
+     --bs-btn-active-shadow : inset 0 3px 5px rgba(0, 0, 0, 0.125);
+     --bs-btn-active-bg : #AAC4FF;
+     --bs-btn-active-border-color : #AAC4FF;
+     --bs-btn-disabled-bg : transparent;
+     --bs-btn-disabled-color : #AAC4FF;
+     --bs-btn-disabled-border-color : #AAC4FF;
+     --bs-gradient : none;
+ }

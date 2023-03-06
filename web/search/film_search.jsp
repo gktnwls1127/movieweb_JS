@@ -10,9 +10,6 @@
 <html>
 <head>
     <%
-        request.setCharacterEncoding("UTF-8");
-        MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
-
         String title = request.getParameter("title");
 
         ConnectionMaker connectionMaker = new MySqlConnectioMaker();
@@ -33,9 +30,7 @@
     <link rel="stylesheet" href="/search/film_search.css">
 </head>
 <body>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <div class="row mb-2">
         <c:if test="${list.isEmpty()}">

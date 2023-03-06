@@ -29,12 +29,9 @@
     %>
     <title>${theaterDTO.theaterName}영화관 수정하기</title>
 </head>
-<body>
+<body style="background-color: #EEF1FF">
+<jsp:include page="/tools/header.jsp"/>
 
-<header class="p-3 mb-3 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
-</header>
 <div class="container">
     <div class="row align-items-center text-center">
         <div class="row justify-content-center">

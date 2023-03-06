@@ -5,3 +5,15 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient : vertical
 }
+
+body {
+    background-color: #EEF1FF !important;
+}
+
+.text-color {
+    --bs-pagination-color : black !important;
+    --bs-pagination-hover-color : #B1B2FF !important;
+    --bs-pagination-focus-color : #B1B2FF !important;
+    --bs-pagination-active-bg : #B1B2FF !important;
+    --bs-pagination-active-border-color : #B1B2FF !important;
+}

@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/assets/js/member/register.js"></script>
 </head>
-<body>
+<body style="background-color: #EEF1FF;">
 <div class="container-fluid">
     <div class="row vh-100 align-items-center text-center">
         <div class="row justify-content-center">

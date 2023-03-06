@@ -37,10 +37,8 @@
 
     %>
 </head>
-<body>
-<header class="p-3 mb-3 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<body style="background-color: #EEF1FF">
+<jsp:include page="/tools/header.jsp"/>
 
 <div class="container">
     <div class="row align-items-center text-center">

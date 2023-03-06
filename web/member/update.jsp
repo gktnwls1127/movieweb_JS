@@ -33,12 +33,29 @@
 
         pageContext.setAttribute("memberDTO", memberDTO);
     %>
+    <style>
+        .btn-outline-color {
+            --bs-btn-color : #AAC4FF;
+            --bs-btn-hover-color : #ffffff;
+            --bs-btn-border-color :#AAC4FF;
+            --bs-btn-focus-shadow-rgb : 25,135,84;
+            --bs-btn-active-color : #fff;
+            --bs-btn-hover-bg :#AAC4FF;
+            --bs-btn-hover-border-color :#AAC4FF;
+            --bs-btn-active-shadow : inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-active-bg : #AAC4FF;
+            --bs-btn-active-border-color : #AAC4FF;
+            --bs-btn-disabled-bg : transparent;
+            --bs-btn-disabled-color : #AAC4FF;
+            --bs-btn-disabled-border-color : #AAC4FF;
+            --bs-gradient : none;
+        }
+    </style>
 </head>
 <body>
-<header class="p-3 mb-3 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
-<div class="container-fluid">
+<jsp:include page="/tools/header.jsp"/>
+
+<div class="container">
     <div class="py-5 text-center">
         <h2>회원 정보 수정</h2>
     </div>
@@ -70,11 +87,8 @@
                     <label class="form-label">OldPassword</label>
                     <input type="password" class="form-control" name="oldPassword">
                 </div>
-
-
                 <hr class="my-4">
-
-                <button class="w-100 btn btn-success btn-lg col-5" type="submit">회원정보 수정</button>
+                <button class="w-100 btn btn-outline-color btn-lg col-5" type="submit">회원정보 수정</button>
             </div>
         </form>
     </div>

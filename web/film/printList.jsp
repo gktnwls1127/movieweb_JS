@@ -17,12 +17,9 @@
     <link rel="stylesheet" href="/film/printList.css">
 </head>
 <body>
-
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
-    <div class="align-items-start justify-center-center">
+    <div class="align-items-start justify-center-center mb-5">
         <%
             MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
 
@@ -75,24 +72,27 @@
         </c:when>
         <c:otherwise>
         <c:set var="list" value="<%=list%>"/>
-        <c:forEach var="f" items="${list}">
-            <div class="m-5">
-                <div class="card" onclick="location.href='/film/printOne.jsp?id=${f.id}'">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="${f.images}" class="img-fluid rounded-start" alt="${f.title}">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">${f.title}</h5>
-                                <p class="card-text text-overflow">${f.summary}</p>
-                                <p class="card-text"><small class="text-muted">${f.rating}</small></p>
+
+        <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+            <c:forEach var="f" items="${list}">
+                <div class="col  m-3" style="max-width: 540px;">
+                    <div class="card" onclick="location.href='/film/printOne.jsp?id=${f.id}'">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="${f.images}" class="img-fluid rounded-start" alt="${f.title}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${f.title}</h5>
+                                    <p class="card-text text-overflow">${f.summary}</p>
+                                    <p class="card-text"><small class="text-muted">${f.rating}</small></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </c:forEach>
+            </c:forEach>
+        </div>
     </div>
     </c:otherwise>
     </c:choose>
@@ -104,9 +104,9 @@
             </div>
         </div>
     </c:if>
-    <tr class="mt-5">
+    <tr class="m-5">
         <td colspan="5">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center text-color">
                 <li class="page-item">
                     <a href="/film/printList.jsp?pageNo=${1}" class="page-link">
                         <span>&laquo;</span>

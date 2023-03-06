@@ -26,9 +26,8 @@
 </head>
 <body>
 <c:set value="<%=logIn%>" var="logIn"/>
-<header class="p-3 mb-5 border-bottom">
-  <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
+
 <div class="container-fluid">
   <div class="row vh-100 align-items-center">
     <c:choose>

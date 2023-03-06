@@ -50,10 +50,8 @@
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
 </head>
-<body>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<body style="background-color: #EEF1FF">
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <c:set var="logIn" value="<%=logIn%>"/>
     <div class="row mb-3 text-center">

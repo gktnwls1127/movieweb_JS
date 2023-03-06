@@ -27,10 +27,8 @@
     %>
     <title>${filmDTO.title} 영화 수정하기</title>
 </head>
-<body>
-<header class="p-3 mb-3 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<body style="background-color: #EEF1FF">
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <div class="row align-items-center justify-content-center text-end">
         <div class="m-5 text-start">
@@ -66,8 +64,7 @@
         <div class="row justify-content-center mb-3">
             <div class="col-10">
                 <div class="form-floating">
-                            <textarea id="summary" type="text" name="summary" class="form-control"
-                                      style="height: 200px">${filmDTO.summary}</textarea>
+                    <textarea id="summary" type="text" name="summary" class="form-control" style="height: 200px">${filmDTO.summary}</textarea>
                     <label for="summary">영화 줄거리</label>
                 </div>
             </div>

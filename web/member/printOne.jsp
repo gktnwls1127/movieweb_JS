@@ -31,42 +31,34 @@
         pageContext.setAttribute("memberDTO", memberDTO);
     %>
 </head>
-<body>
-<header class="p-3 mb-3 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
-<div class="container-fluid">
-    <div class="py-5 text-center">
-        <h2>회원 정보 수정</h2>
-    </div>
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-md-5 col-lg-4 order-md-last align-items-center">
-                <button class="btn btn-outline-success" onclick="location.href='/member/update.jsp?id=${memberDTO.id}'">
-                    정보 수정
-                </button>
-                <button class="btn btn-outline-danger" onclick="withdrawal()">회원 탈퇴</button>
-            </div>
-            <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">${memberDTO.username}님</h4>
+<body style="background-color: #EEF1FF">
+<jsp:include page="/tools/header.jsp"/>
+
+<div class="container">
+    <div class="py-5 row align-items-center text-center justify-content-center">
+        <h2 class="mb-5">회원 정보 수정</h2>
+        <h4 class="text-start">${memberDTO.username}님</h4>
+        <hr class="my-4">
+        <form class="needs-validation">
+            <div class="row g-3">
+                <div class="col-12">
+                    <h5 class="form-label">회원 번호 : <b>${memberDTO.id}번</b></h5>
+                </div>
+                <div class="col-12">
+                    <h5 class="form-label">회원 아이디: <b>${memberDTO.username}</b></h5>
+                </div>
+
+                <div class="col-12">
+                    <h5 class="form-label">회원 닉네임 : <b>${memberDTO.nickname}</b></h5>
+                </div>
                 <hr class="my-4">
-                <form class="needs-validation">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <h6 class="form-label">Member Number : <b>${memberDTO.id}</b></h6>
-                        </div>
-                        <div class="col-12">
-                            <h6 class="form-label">Username : <b>${memberDTO.username}</b></h6>
-                        </div>
-
-                        <div class="col-12">
-                            <h6 class="form-label">Nickname : <b>${memberDTO.nickname}</b></h6>
-                        </div>
-
-                        <hr class="my-4">
-                    </div>
-                </form>
             </div>
+        </form>
+        <div class="col-md-5 col-lg-4 order-md-last align-items-center">
+            <button class="btn btn-outline-success" onclick="location.href='/member/update.jsp?id=${memberDTO.id}'">
+                정보 수정
+            </button>
+            <button class="btn btn-outline-danger" onclick="withdrawal()">회원 탈퇴</button>
         </div>
     </div>
 </div>

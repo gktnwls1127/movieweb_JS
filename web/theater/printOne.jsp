@@ -42,9 +42,8 @@
     <script src="/assets/js/theater/delete.js"></script>
 </head>
 <body>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
+
 <div class="container">
     <c:set var="logIn" value="<%=logIn%>"/>
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">

@@ -10,19 +10,25 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
   <script src="/assets/js/index.js"></script>
+  <link rel="stylesheet" href="/tools/header.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+<header class="p-3 mb-5 border-bottom text-bg-color">
 <c:set value="<%=logIn%>" var="logIn"/>
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-        <h4 style="margin-right: 15px">MOVIE</h4>
+        <h4 class="main-text" style="">CINEMA</h4>
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/film/printList.jsp" class="nav-link px-2 link-secondary">영화</a></li>
-        <li><a href="/theater/printList.jsp" class="nav-link px-2 link-dark">극장</a></li>
-        <li><a href="/onBoard/printList.jsp" class="nav-link px-2 link-dark">상영중인 영화</a></li>
+        <li><a href="/film/printList.jsp" class="nav-link px-2 text-font">영화</a></li>
+        <li><a href="/theater/printList.jsp" class="nav-link px-2 text-font">극장</a></li>
+        <li><a href="/onBoard/printList.jsp" class="nav-link px-2 text-font">상영중인 영화</a></li>
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="/search/film_search.jsp" method="post">
@@ -31,8 +37,8 @@
 
       <c:choose>
         <c:when  test="${logIn eq null}">
-          <button type="button" class="btn btn-outline-primary me-2" onclick="location.href = '/member/logIn.jsp'">Login</button>
-          <button type="button" class="btn btn-primary" onclick="location.href='/member/register.jsp'">Sign-up</button>
+          <button type="button" class="custom-btn btn-8 mr-4" onclick="location.href = '/member/logIn.jsp'">Login</button>
+          <button type="button" class="custom-btn btn-8" onclick="location.href='/member/register.jsp'">Sign-up</button>
         </c:when>
         <c:otherwise>
           <div class="dropdown text-end">
@@ -58,8 +64,8 @@
           </div>
         </c:otherwise>
       </c:choose>
-
     </div>
   </div>
+</header>
 </body>
 </html>

@@ -12,7 +12,6 @@
   <script src="/assets/js/index.js"></script>
 </head>
 <body class="text-center">
-
 <main class="form-signin w-100 m-auto">
     <h1 class="h3 mb-3 fw-normal">로그인</h1>
     <div class="form-floating">

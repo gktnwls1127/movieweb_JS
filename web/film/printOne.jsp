@@ -69,9 +69,7 @@
     <script src="/assets/js/review/reviewUtil.js"></script>
 </head>
 <body>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <c:set var="logIn" value="<%=logIn%>"/>
     <div class="row mb-5 text-center">
@@ -88,17 +86,18 @@
             </c:if>
         </div>
         <div class="col-md-7 themed-grid-col mt-3">
-            <h5>영화 제목 : ${filmDTO.title}</h5>
-            <p class="mb-5"><small>영화 등급 : ${filmDTO.rating}</small></p>
-            <h6 class="text-end m-3" style="color: blue"><b>평점 : ${reviewController.calculateAverage(reviewList)}</b>
-            </h6>
+            <h3>${filmDTO.title}</h3>
+            <p class="mb-5"><small>${filmDTO.rating}</small></p>
+            <div class="text-start m-3" ><span style="color: blue; font-size: 48px"><b>${reviewController.calculateAverage(reviewList)}</b></span>
+            <span style="font-size: 30px">/5.0</span></div>
             <p>영화 줄거리 : ${filmDTO.summary}</p>
         </div>
     </div>
-    <div class="text-center">
-        <c:if test="${logIn.level != 3 && reviewController.validateReview(filmDTO.id, logIn.id)}">
+
+    <c:if test="${logIn.level != 3 && reviewController.validateReview(filmDTO.id, logIn.id)}">
+        <div class="text-center">
             <hr>
-            <h4 class="text-center">평점 등록</h4>
+            <h4>평점 등록</h4>
             <div class="star-rating space-x-4 mx-auto mb-5">
                 <input type="radio" id="5-stars" name="score" value="5"/>
                 <label for="5-stars" class="star pr-4">★</label>
@@ -115,129 +114,130 @@
                 <c:if test="${logIn.level eq 2}">
                     <input type="text" name="review" class="form-control mb-3" placeholder="평론을 입력해주세요.">
                 </c:if>
-                <button class="btn btn-outline-primary mb-3" onclick="writeReview()">등록하기</button>
             </div>
+            <button class="btn btn-outline-primary mb-3" onclick="writeReview()">등록하기</button>
             <hr class="mb-5">
-        </c:if>
+        </div>
+    </c:if>
 
-        <div class="row align-items-start vh-100 justify-content-center">
-            <div class="tabs">
-                <input id="all" type="radio" name="tab_item" checked>
-                <label class="tab_item" for="all">전체 평점</label>
-                <input id="general" type="radio" name="tab_item">
-                <label class="tab_item" for="general">일반회원 평점</label>
-                <input id="critic" type="radio" name="tab_item">
-                <label class="tab_item" for="critic">전문가 평점</label>
-                <div class="tab_content row align-items-start justify-content-center" id="all_content">
-                    <ul>
-                        <c:choose>
-                            <c:when test="${empty reviewList}">
-                                <h6>아직 등록된 평점이 존재하지 않습니다.</h6>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${reviewList}" var="review">
-                                    <li class="row row-cols-4 mt-3 mb-3">
-                                        <div class="col">${memberController.selectOne(review.writerId).nickname}
-                                            <h5><b>${review.score}점</b></h5>
-                                            <div class="star-ratings">
-                                                <div class="star-ratings-fill space-x-2 text-lg"
-                                                     style="width: ${review.score*20}%">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
-                                                <div class="star-ratings-base space-x-2 text-lg">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
+    <div class="row align-items-start vh-100 justify-content-center">
+        <div class="tabs">
+            <input id="all" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="all">전체 평점</label>
+            <input id="general" type="radio" name="tab_item">
+            <label class="tab_item" for="general">일반회원 평점</label>
+            <input id="critic" type="radio" name="tab_item">
+            <label class="tab_item" for="critic">전문가 평점</label>
+            <div class="tab_content row align-items-start justify-content-center" id="all_content">
+                <ul>
+                    <c:choose>
+                        <c:when test="${empty reviewList}">
+                            <h6>아직 등록된 평점이 존재하지 않습니다.</h6>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${reviewList}" var="review">
+                                <li class="row row-cols-6 mt-3 mb-3">
+                                    <div class="col">${memberController.selectOne(review.writerId).nickname}
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg"
+                                                 style="width: ${review.score*20}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                             </div>
                                         </div>
-                                        <c:if test="${memberController.selectOne(review.writerId).level != 2 && review.review == null}">
-                                        </c:if>
-                                        <div class="col-6">${review.review}</div>
-                                        <c:if test="${review.writerId eq logIn.id}">
-                                            <div class="col text-end">
-                                                <a onclick="nwindow(${review.id}, ${filmDTO.id})">수정</a>
-                                                <a onclick="deleteReview(${review.id})">삭제</a>
+                                    </div>
+                                    <h5><b>${review.score}점</b></h5>
+                                    <c:if test="${memberController.selectOne(review.writerId).level != 2 && review.review == null}">
+                                    </c:if>
+                                    <div class="col-6">${review.review}</div>
+                                    <c:if test="${review.writerId eq logIn.id}">
+                                        <div class="col text-end">
+                                            <button class="custom-btn btn-6" onclick="nwindow(${review.id}, ${filmDTO.id})">수정</button>
+                                            <button class="custom-btn btn-6" onclick="deleteReview(${review.id})">삭제</button>
+                                        </div>
+                                    </c:if>
+                                </li>
+                                <hr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+            <div class="tab_content row align-items-start justify-content-center" id="general_content">
+                <ul>
+                    <c:choose>
+                        <c:when test="${empty generalList}">
+                            <h6>아직 등록된 일반회원 평점이 존재하지 않습니다.</h6>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${generalList}" var="review">
+                                <li class="row row-cols-4 mt-3 mb-3">
+                                    <div class="col">${memberController.selectOne(review.writerId).nickname}
+                                        <h5><b>${review.score}점</b></h5>
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg"
+                                                 style="width: ${review.score*20}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                             </div>
-                                        </c:if>
-                                    </li>
-                                    <hr>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
-                    </ul>
-                </div>
-                <div class="tab_content row align-items-start justify-content-center" id="general_content">
-                    <ul>
-                        <c:choose>
-                            <c:when test="${empty generalList}">
-                                <h6>아직 등록된 일반회원 평점이 존재하지 않습니다.</h6>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${generalList}" var="review">
-                                    <li class="row row-cols-4 mt-3 mb-3">
-                                        <div class="col">${memberController.selectOne(review.writerId).nickname}
-                                            <h5><b>${review.score}점</b></h5>
-                                            <div class="star-ratings">
-                                                <div class="star-ratings-fill space-x-2 text-lg"
-                                                     style="width: ${review.score*20}%">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
-                                                <div class="star-ratings-base space-x-2 text-lg">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                             </div>
                                         </div>
-                                        <div class="col-6"></div>
-                                        <c:if test="${review.writerId eq logIn.id}">
-                                            <div class="col text-end">
-                                                <a onclick="location.href='/review/update.jsp?id=${review.id}'">수정</a>
-                                                <a onclick="deleteReview(${review.id})">삭제</a>
+                                    </div>
+                                    <div class="col-6"></div>
+                                    <c:if test="${review.writerId eq logIn.id}">
+                                        <div class="col text-end">
+                                            <button class="btn-outline-color" onclick="location.href='/review/update.jsp?id=${review.id}'">수정</button>
+                                            <button class="btn-outline-color" onclick="deleteReview(${review.id})">삭제</button>
+                                        </div>
+                                    </c:if>
+                                </li>
+                                <hr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
+            <div class="tab_content row align-items-start justify-content-center" id="critic_content">
+                <ul>
+                    <c:choose>
+                        <c:when test="${empty criticList}">
+                            <h6>아직 등록된 전문가 평점이 존재하지 않습니다.</h6>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${criticList}" var="review">
+                                <li class="row row-cols-4 mt-3 mb-3">
+                                    <div class="col">${memberController.selectOne(review.writerId).nickname}
+                                        <h5><b>${review.score}점</b></h5>
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x-2 text-lg"
+                                                 style="width: ${review.score*20}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                             </div>
-                                        </c:if>
-                                    </li>
-                                    <hr>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
-                    </ul>
-                </div>
-                <div class="tab_content row align-items-start justify-content-center" id="critic_content">
-                    <ul>
-                        <c:choose>
-                            <c:when test="${empty criticList}">
-                                <h6>아직 등록된 전문가 평점이 존재하지 않습니다.</h6>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${criticList}" var="review">
-                                    <li class="row row-cols-4 mt-3 mb-3">
-                                        <div class="col">${memberController.selectOne(review.writerId).nickname}
-                                            <h5><b>${review.score}점</b></h5>
-                                            <div class="star-ratings">
-                                                <div class="star-ratings-fill space-x-2 text-lg"
-                                                     style="width: ${review.score*20}%">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
-                                                <div class="star-ratings-base space-x-2 text-lg">
-                                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                                </div>
+                                            <div class="star-ratings-base space-x-2 text-lg">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                             </div>
                                         </div>
-                                        <div class="col-6">${review.review}</div>
-                                        <c:if test="${review.writerId eq logIn.id}">
-                                            <div class="col text-end">
-                                                <a onclick="location.href='/review/update.jsp?id=${review.id}'">수정</a>
-                                                <a onclick="deleteReview(${review.id})">삭제</a>
-                                            </div>
-                                        </c:if>
-                                    </li>
-                                    <hr>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
-                    </ul>
-                </div>
+                                    </div>
+                                    <div class="col-6">${review.review}</div>
+                                    <c:if test="${review.writerId eq logIn.id}">
+                                        <div class="col text-end">
+                                            <button class="custom-btn btn-6" onclick="location.href='/review/update.jsp?id=${review.id}'">수정</button>
+                                            <button class="custom-btn btn-6" onclick="deleteReview(${review.id})">삭제</button>
+                                        </div>
+                                    </c:if>
+                                </li>
+                                <hr>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

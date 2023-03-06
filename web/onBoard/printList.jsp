@@ -63,9 +63,7 @@
     %>
 </head>
 <body>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
 <c:choose>
 <c:when test="${list.isEmpty()}">
     <div class="row">

@@ -57,13 +57,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
 <c:set value="<%=logIn%>" var="logIn"/>
 <c:set value="<%=list%>" var="list"/>
-<header class="p-3 mb-5 border-bottom">
-    <jsp:include page="/tools/header.jsp"/>
-</header>
+<jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <c:forEach var="f" items="${list}">
@@ -78,7 +77,7 @@
     <div class="mt-5">
         <tr>
             <td colspan="5" >
-                <ul class="pagination justify-content-center">
+                <ul class="pagination justify-content-center text-color">
                     <li class="page-item">
                         <a href="/index.jsp?pageNo=${1}" class="page-link">
                             <span>&laquo;</span>
