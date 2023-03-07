@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/assets/js/member/register.js"></script>
+    <link href="/member/register.css" rel="stylesheet" type="text/css">
 </head>
 <body style="background-color: #EEF1FF;">
 <div class="container-fluid">
@@ -45,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <button type="submit" class="btn btn-outline-primary col-6 m-1" onclick="validateInput()">회원가입</button>
+                    <button type="submit" class="btn btn-outline-color col-6 m-1" onclick="validateInput()">회원가입</button>
                 </div>
         </div>
     </div>

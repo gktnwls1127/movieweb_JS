@@ -12,11 +12,10 @@
 .text-font{
     font-family: 'DM Serif Display', serif;
     font-family: 'Noto Serif KR', serif;
-    font-size: 20px;
+    font-size: 20px !important;
     color: #EEF1FF;
-    --bs-nav-link-color : #B1B2FF;
-    --bs-nav-link-hover-color : #B1B2FF;
-
+    --bs-nav-link-color : #EEF1FF;
+    --bs-nav-link-hover-color : #B1B2FF ;
 }
 
 .custom-btn {

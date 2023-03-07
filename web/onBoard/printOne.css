@@ -1,23 +1,5 @@
-.film-title{
-    overflow: hidden;
-    white-space: normal;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    word-break: keep-all;
-}
-
-.film-summary{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display:  -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient : vertical;
-}
-
 body {
-   background-color: #EEF1FF;
+    background-color: #EEF1FF;
 }
 
 .custom-btn1 {

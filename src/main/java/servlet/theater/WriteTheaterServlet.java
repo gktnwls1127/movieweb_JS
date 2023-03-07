@@ -29,7 +29,7 @@ public class WriteTheaterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
             if (logIn.getLevel() != 3){
-                response.sendRedirect("/theater/printList.jsp");
+                response.sendRedirect("/theater/printOne.jsp?id=1");
             }
 
             ConnectionMaker connectionMaker = new MySqlConnectioMaker();

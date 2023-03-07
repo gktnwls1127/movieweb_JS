@@ -99,6 +99,22 @@ public class MemberController {
         }
     }
 
+    public void updateLevel(MemberDTO memberDTO){
+        String query = "UPDATE `member` SET `upgradeLevel` = ? WHERE `id` = ?";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setInt(1, memberDTO.getUpgradeLevel());
+            pstmt.setInt(2, memberDTO.getId());
+
+            pstmt.executeUpdate();
+
+            pstmt.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void delete(int id){
         String query = "DELETE FROM `member` WHERE `id` = ?";
 

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "LogInFilter", urlPatterns = {"/film/*", "/theater/*", "/onBoard/*"})
+@WebFilter(filterName = "LogInFilter", urlPatterns = {"/admin/*", "/film/*", "/theater/*", "/onBoard/*"})
 public class LogInFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {

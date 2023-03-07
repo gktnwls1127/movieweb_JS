@@ -64,80 +64,83 @@
 </head>
 <body>
 <jsp:include page="/tools/header.jsp"/>
-<c:choose>
-<c:when test="${list.isEmpty()}">
+<div class="container">
+    <c:choose>
+    <c:when test="${list.isEmpty()}">
     <div class="row">
         <div class="col-6">
             <span>아직 상영중인 영화가 존재하지 않습니다.</span>
         </div>
     </div>
-</c:when>
-<c:otherwise>
-<div class="container">
-    <div class="align-items-center justify-center-center">
-        <h5 class="mb-5 text-center">현재 상영중인 영화</h5>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-            <c:forEach var="onboard" items="${list}">
-                <div class="col">
-                    <div class="card"
-                         onclick="location.href='/onBoard/printOne.jsp?filmId=${onboard.filmId}'">
-                        <img src="${filmController.selectOne(onboard.filmId).images}"
-                             class="img-thumbnail rounded-start img-object"
-                             alt="${filmController.selectOne(onboard.filmId).title}">
-                        <div class="card-body">
-                            <h5 class="card-title">${filmController.selectOne(onboard.filmId).title}</h5>
-                            <p class="card-text"><small
-                                    class="text-muted">${filmController.selectOne(onboard.filmId).rating}</small></p>
+    </c:when>
+    <c:otherwise>
+    <div class="container">
+        <div class="align-items-center justify-center-center">
+            <h5 class="mb-5 text-center">현재 상영중인 영화</h5>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                <c:forEach var="onboard" items="${list}">
+                    <div class="col">
+                        <div class="card"
+                             onclick="location.href='/onBoard/printOne.jsp?filmId=${onboard.filmId}'">
+                            <img src="${filmController.selectOne(onboard.filmId).images}"
+                                 class="img-thumbnail rounded-start img-object"
+                                 alt="${filmController.selectOne(onboard.filmId).title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${filmController.selectOne(onboard.filmId).title}</h5>
+                                <p class="card-text"><small
+                                        class="text-muted">${filmController.selectOne(onboard.filmId).rating}</small>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:forEach>
-        </div>
-        </c:otherwise>
-        </c:choose>
-        <c:if test="${logIn.level == 3}">
-            <div class="row mb-5">
-                <div class="col-12 text-end">
-                    <span class="btn btn-outline-info" onclick="location.href='/onBoard/write.jsp'">상영 정보 추가하기</span>
-                </div>
+                </c:forEach>
             </div>
-        </c:if>
-        <tr>
-            <td colspan="5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a href="/onBoard/printList.jsp?pageNo=${1}" class="page-link">
-                            <span>&laquo;</span>
-                        </a>
-                    </li>
-                    <c:forEach begin="${startPage}" end="${endPage}" var="i">
-                        <c:choose>
-                            <c:when test="${currentPage eq i}">
-                                <li class="page-item active">
-                                    <a href="/onBoard/printList.jsp?pageNo=${i}" class="page-link">
-                                        <span>${i}</span>
-                                    </a>
-                                </li>
-                            </c:when>
-                            <c:otherwise>
-                                <li class="page-item">
-                                    <a href="/onBoard/printList.jsp?pageNo=${i}" class="page-link">
-                                        <span>${i}</span>
-                                    </a>
-                                </li>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                    <li class="page-item">
-                        <a href="/onBoard/printList.jsp?pageNo=${totalPage}" class="page-link">
-                            <span>&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
+            </c:otherwise>
+            </c:choose>
+            <c:if test="${logIn.level == 3}">
+                <div class="row mb-5">
+                    <div class="col-12 text-end">
+                        <span class="btn btn-outline-info"
+                              onclick="location.href='/onBoard/write.jsp'">상영 정보 추가하기</span>
+                    </div>
+                </div>
+            </c:if>
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a href="/onBoard/printList.jsp?pageNo=${1}" class="page-link">
+                                <span>&laquo;</span>
+                            </a>
+                        </li>
+                        <c:forEach begin="${startPage}" end="${endPage}" var="i">
+                            <c:choose>
+                                <c:when test="${currentPage eq i}">
+                                    <li class="page-item active">
+                                        <a href="/onBoard/printList.jsp?pageNo=${i}" class="page-link">
+                                            <span>${i}</span>
+                                        </a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item">
+                                        <a href="/onBoard/printList.jsp?pageNo=${i}" class="page-link">
+                                            <span>${i}</span>
+                                        </a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <li class="page-item">
+                            <a href="/onBoard/printList.jsp?pageNo=${totalPage}" class="page-link">
+                                <span>&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </div>
     </div>
-</div>
 
 </body>
 </html>

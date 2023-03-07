@@ -31,16 +31,6 @@
         pageContext.setAttribute("theaterController", theaterController);
         pageContext.setAttribute("list", list);
     %>
-
-    <script>
-        function confirmDelete() {
-            let result = confirm("정말로 삭제하시겠습니까?");
-            if (result) {
-                location.href = "/film/delete.jsp?id=" +
-                <%=filmDTO.getId()%>
-            }
-        }
-    </script>
     <title>
         <%=filmDTO.getTitle()%>
     </title>
@@ -49,8 +39,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/onBoard/printOne.css">
 </head>
-<body style="background-color: #EEF1FF">
+<body>
 <jsp:include page="/tools/header.jsp"/>
 <div class="container">
     <c:set var="logIn" value="<%=logIn%>"/>
@@ -77,7 +68,7 @@
         <c:forEach var="list" items="${list}">
             <div class="col mb-3">
                 <div class="card">
-                    <h5 class="card-header">${theaterController.selectOne(list.theaterId).id}. ${theaterController.selectOne(list.theaterId).theaterName}점 <small style="color : blue"><b>상영 시간 : ${list.runningTime}</b></small></h5>
+                    <h5 class="card-header">${theaterController.selectOne(list.theaterId).id}. ${theaterController.selectOne(list.theaterId).theaterName}점 <small style="color : blue"><button class="custom-btn1 btn-18">${list.runningTime}</button></small></h5>
                     <div class="card-body">
                         <h5 class="card-title">위치 : ${theaterController.selectOne(list.theaterId).theaterPlace}</h5>
                         <p class="card-text">전화 번호 : ${theaterController.selectOne(list.theaterId).theaterNumber}</p>

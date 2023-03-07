@@ -88,8 +88,9 @@
         <div class="col-md-7 themed-grid-col mt-3">
             <h3>${filmDTO.title}</h3>
             <p class="mb-5"><small>${filmDTO.rating}</small></p>
-            <div class="text-start m-3" ><span style="color: blue; font-size: 48px"><b>${reviewController.calculateAverage(reviewList)}</b></span>
-            <span style="font-size: 30px">/5.0</span></div>
+            <div class="text-start m-3"><span
+                    style="color: blue; font-size: 48px"><b>${reviewController.calculateAverage(reviewList)}</b></span>
+                <span style="font-size: 30px">/5.0</span></div>
             <p>영화 줄거리 : ${filmDTO.summary}</p>
         </div>
     </div>
@@ -128,6 +129,7 @@
             <label class="tab_item" for="general">일반회원 평점</label>
             <input id="critic" type="radio" name="tab_item">
             <label class="tab_item" for="critic">전문가 평점</label>
+
             <div class="tab_content row align-items-start justify-content-center" id="all_content">
                 <ul>
                     <c:choose>
@@ -154,8 +156,12 @@
                                     <div class="col-6">${review.review}</div>
                                     <c:if test="${review.writerId eq logIn.id}">
                                         <div class="col text-end">
-                                            <button class="custom-btn btn-6" onclick="nwindow(${review.id}, ${filmDTO.id})">수정</button>
-                                            <button class="custom-btn btn-6" onclick="deleteReview(${review.id})">삭제</button>
+                                            <button class="btn btn-outline-success"
+                                                    onclick="location.href='/review/update.jsp?id=${review.id}'">수정
+                                            </button>
+                                            <button class="btn btn-outline-danger" onclick="deleteReview(${review.id})">
+                                                삭제
+                                            </button>
                                         </div>
                                     </c:if>
                                 </li>
@@ -173,9 +179,8 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${generalList}" var="review">
-                                <li class="row row-cols-4 mt-3 mb-3">
+                                <li class="row row-cols-6 mt-3 mb-3">
                                     <div class="col">${memberController.selectOne(review.writerId).nickname}
-                                        <h5><b>${review.score}점</b></h5>
                                         <div class="star-ratings">
                                             <div class="star-ratings-fill space-x-2 text-lg"
                                                  style="width: ${review.score*20}%">
@@ -186,11 +191,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <h5><b>${review.score}점</b></h5>
                                     <div class="col-6"></div>
                                     <c:if test="${review.writerId eq logIn.id}">
                                         <div class="col text-end">
-                                            <button class="btn-outline-color" onclick="location.href='/review/update.jsp?id=${review.id}'">수정</button>
-                                            <button class="btn-outline-color" onclick="deleteReview(${review.id})">삭제</button>
+                                            <button class="btn btn-outline-success"
+                                                    onclick="location.href='/review/update.jsp?id=${review.id}'">수정
+                                            </button>
+                                            <button class="btn btn-outline-danger" onclick="deleteReview(${review.id})">
+                                                삭제
+                                            </button>
                                         </div>
                                     </c:if>
                                 </li>
@@ -208,9 +218,8 @@
                         </c:when>
                         <c:otherwise>
                             <c:forEach items="${criticList}" var="review">
-                                <li class="row row-cols-4 mt-3 mb-3">
+                                <li class="row row-cols-6 mt-3 mb-3">
                                     <div class="col">${memberController.selectOne(review.writerId).nickname}
-                                        <h5><b>${review.score}점</b></h5>
                                         <div class="star-ratings">
                                             <div class="star-ratings-fill space-x-2 text-lg"
                                                  style="width: ${review.score*20}%">
@@ -221,11 +230,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <h5><b>${review.score}점</b></h5>
                                     <div class="col-6">${review.review}</div>
                                     <c:if test="${review.writerId eq logIn.id}">
                                         <div class="col text-end">
-                                            <button class="custom-btn btn-6" onclick="location.href='/review/update.jsp?id=${review.id}'">수정</button>
-                                            <button class="custom-btn btn-6" onclick="deleteReview(${review.id})">삭제</button>
+                                            <button class="btn btn-outline-success"
+                                                    onclick="location.href='/review/update.jsp?id=${review.id}'">수정
+                                            </button>
+                                            <button class="btn btn-outline-danger" onclick="deleteReview(${review.id})">
+                                                삭제
+                                            </button>
                                         </div>
                                     </c:if>
                                 </li>

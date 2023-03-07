@@ -17,7 +17,7 @@ let writeTheater = () => {
                     text : "성공적으로 영화 작성이 완료 되었습니다.",
                     icon: "success"
                 }).then(()=>{
-                    location.href = '/theater/printList.jsp'
+                    location.href = '/theater/printOne.jsp?id=1'
                 })
             } else {
                 Swal.fire({

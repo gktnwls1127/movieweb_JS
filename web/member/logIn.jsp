@@ -22,7 +22,7 @@
       <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호">
       <label for="username">비밀번호</label>
     </div>
-    <button class="w-100 btn btn-lg btn-outline-primary" type="submit" onclick="auth()">로그인</button>
+    <button class="w-100 btn btn-lg btn-outline-color" type="submit" onclick="auth()">로그인</button>
 </main>
 </body>
 </html>

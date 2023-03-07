@@ -1,4 +1,26 @@
+let updateMember = (id) => {
+    let data = {
+        id: id,
+        oldPassword: $('#oldPassword').val(),
+        newPassword: $('#newPassword').val(),
+        nickname: $('#nickname').val()
+    }
 
+    $.ajax({
+        url: "/member/update",
+        method: "post",
+        data: data,
+        success: (message) => {
+            let response = JSON.parse(message);
+            Swal.fire({
+                text: response.message,
+                icon: response.status
+            }).then(() => {
+                location.href = response.nextPath;
+            })
+        }
+    })
+}
 let withdrawal = () => {
     let temp = new URLSearchParams(window.location.search).get("id");
     let delData = {

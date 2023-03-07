@@ -26,9 +26,9 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/film/printList.jsp" class="nav-link px-2 text-font">영화</a></li>
-        <li><a href="/theater/printList.jsp" class="nav-link px-2 text-font">극장</a></li>
-        <li><a href="/onBoard/printList.jsp" class="nav-link px-2 text-font">상영중인 영화</a></li>
+        <li class="nav-item active"><a href="/film/printList.jsp" class="nav-link px-2 text-font">영화</a></li>
+        <li class="nav-item"><a href="/theater/printOne.jsp?id=1" class="nav-link px-2 text-font">극장</a></li>
+        <li class="nav-item"><a href="/onBoard/printList.jsp" class="nav-link px-2 text-font">상영중인 영화</a></li>
       </ul>
 
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="/search/film_search.jsp" method="post">
@@ -51,7 +51,8 @@
             <ul class="dropdown-menu text-small" style="">
               <c:choose>
                 <c:when test="${logIn.level eq 3}">
-                  <li><a class="dropdown-item" href="/member/upgradeList.jsp">등업 신청 현황</a></li>
+                  <li><a class="dropdown-item" href="/admin/upgradeList.jsp">등업 신청 현황</a></li>
+                  <li><a class="dropdown-item" href="/admin/memberList.jsp">가입회원 관리</a></li>
                 </c:when>
                 <c:otherwise>
                   <li><a class="dropdown-item" href="/member/promote.jsp?id=${logIn.id}">등업 신청</a></li>

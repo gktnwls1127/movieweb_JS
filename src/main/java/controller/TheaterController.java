@@ -61,7 +61,7 @@ public class TheaterController {
     public ArrayList<TheaterDTO> selectAll(){
         ArrayList<TheaterDTO> list = new ArrayList<>();
 
-        String query = "SELECT * FROM `theater` ORDER BY `theater`.`id`";
+        String query = "SELECT * FROM `theater` ORDER BY `theater`.`theaterName`";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);

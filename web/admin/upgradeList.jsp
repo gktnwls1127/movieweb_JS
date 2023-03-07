@@ -13,6 +13,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/assets/js/member/upgradeRank.js"></script>
+    <link rel="stylesheet" href="/admin/listTable.css">
 
     <%
         MemberDTO logIn = (MemberDTO) session.getAttribute("logIn");
@@ -76,7 +80,7 @@
                     <c:choose>
                         <c:when test="${member.level != member.upgradeLevel}">
                             <button class="btn btn-outline-success"
-                                    onclick="location.href='/member/upgrade_logic.jsp?id=${member.id}'">
+                                    onclick="upgradeRank(${member.id})">
                                 승인
                             </button>
                         </c:when>

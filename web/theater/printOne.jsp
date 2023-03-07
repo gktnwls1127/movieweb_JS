@@ -25,9 +25,12 @@
 
         TheaterDTO theaterDTO = theaterController.selectOne(id);
 
+        int onBoardNumber = 1;
+
         pageContext.setAttribute("list", list);
         pageContext.setAttribute("filmController", filmController);
         pageContext.setAttribute("theaterDTO", theaterDTO);
+        pageContext.setAttribute("onBoardNumber", onBoardNumber);
 
     %>
     <title>${theaterDTO.theaterName}</title>
@@ -41,9 +44,10 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/assets/js/theater/delete.js"></script>
 </head>
-<body>
+<body style="background-color: #EEF1FF">
 <jsp:include page="/tools/header.jsp"/>
 
+<jsp:include page="/theater/printList.jsp"/>
 <div class="container">
     <c:set var="logIn" value="<%=logIn%>"/>
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
@@ -63,20 +67,23 @@
     </div>
     <div class="row mb-2">
         <c:forEach items="${list}" var="onboard">
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">상영번호 ${onboard.id}</strong>
-                    <h3 class="film-title mb-2">${filmController.selectOne(onboard.filmId).title}</h3>
-                    <div class="runningTime mb-1 text-end"><b>상영 시간 ${onboard.runningTime}</b></div>
-                    <p class="film-summary card-text mb-auto">${filmController.selectOne(onboard.filmId).summary}</p>
-                    <a href="/film/printOne.jsp?id=${onboard.filmId}" class="stretched-link">더보기</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <img class="bd-placeholder-img" width="200" height="250" src="${filmController.selectOne(onboard.filmId).images}"/>
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary">상영 ${onBoardNumber}관</strong>
+                        <h3 class="film-title mb-2">${filmController.selectOne(onboard.filmId).title}</h3>
+                        <p class="film-summary card-text mb-auto">${filmController.selectOne(onboard.filmId).summary}</p>
+                        <div class="runningTime mb-2 mt-2 text-start">
+                            <button class="custom-btn1 btn-18" onclick="location.href='/reservation/printOne.jsp?id=${onboard.filmId}'">${onboard.runningTime}</button>
+                        </div>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img class="bd-placeholder-img" width="200"
+                             src="${filmController.selectOne(onboard.filmId).images}"/>
+                    </div>
                 </div>
             </div>
-        </div>
+            <c:set var="onBoardNumber" value="${onBoardNumber+1}"></c:set>
         </c:forEach>
     </div>
 </div>

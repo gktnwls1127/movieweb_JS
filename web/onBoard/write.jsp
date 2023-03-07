@@ -72,7 +72,7 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-10">
                     <div class="form-floating">
-                        <input id="runningTime" type="text" name="runningTime" class="form-control">
+                        <input id="runningTime" type="time" name="runningTime" class="form-control">
                         <label for="runningTime">영화 상영 시간</label>
                     </div>
                 </div>
